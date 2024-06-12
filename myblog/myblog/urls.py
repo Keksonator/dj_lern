@@ -20,8 +20,8 @@ from blog.views import page_not_found
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
-    path('chats/', include('chat.urls')),
+    path('', include('blog.urls')),
+    path('', include('chat.urls')),
 ]
 
 

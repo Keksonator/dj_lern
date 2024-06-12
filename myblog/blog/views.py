@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotFound
+from django.urls import reverse
 
 
 def index(request):
@@ -15,10 +16,13 @@ def post_num(request, post_id):
 
 
 def post_slug(request, post_slug):
-    return HttpResponse(f"<h1>Пост #{post_slug}</h1>")
+    return HttpResponse(f"<h1>Пост {post_slug}</h1>")
 
 
 def archive(request, year):
+    if year > 2024:
+        uri = reverse('post_slug', args=('music', ))
+        return redirect(uri)
     return HttpResponse(f"<h1>Архив по году {year}</h1>")
 
 
