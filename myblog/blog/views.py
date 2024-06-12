@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 
 def index(request):
@@ -22,3 +22,5 @@ def archive(request, year):
     return HttpResponse(f"<h1>Архив по году {year}</h1>")
 
 
+def page_not_found(request, exception):
+    return HttpResponseNotFound("<h1>Страница не найдена</h1>")
