@@ -1,14 +1,25 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from .models import Post
 
+menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
 
 def index(request):
-    return render(request, 'blog/index.html')
+    data = {'title': 'Главная страница',
+            'menu': menu,
+            }
+    return render(request, 'blog/index.html', context=data)
+
+
+def about(request):
+    data = {'title': 'О сайте'}
+    return render(request,  'blog/about.html', data)
 
 
 def posts(request,):
-    return HttpResponse("<h1>Список постов</h1>")
+    all_post = Post.objects.all()
+    return render(request, 'blog/posts.html', {"all_post" : all_post})
 
 
 def post_num(request, post_id):
