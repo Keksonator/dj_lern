@@ -1,15 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 from .models import Post
 
-menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
 
 def index(request):
-    data = {'title': 'Главная страница',
-            'menu': menu,
-            }
-    return render(request, 'blog/index.html', context=data)
+    return render(request, 'blog/index.html',)
 
 
 def about(request):
@@ -23,7 +19,8 @@ def posts(request,):
 
 
 def post_num(request, post_id):
-    return HttpResponse(f"<h1>Пост #{post_id}</h1>")
+      post = get_object_or_404(Post, pk=post_id)
+      return render(request, 'blog/post.html', {'post': post})
 
 
 def post_slug(request, post_slug):
