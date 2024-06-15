@@ -7,7 +7,7 @@
   <body>
     {%for post in all_post%}
     <h1>
-      <a href="{% url 'blog:post.html' post.id %}">{{post.title}}</a>
+      {{post.title}}</a>
     </h1>
     <p>{{post.text}}</p>
     {% endfor %}
