@@ -6,8 +6,9 @@
   </head>
   <body>
     {%for post in all_post%}
-    <h1><a href='{% url "blog:post_id" post.id %}'>{{post.title}}</a></h1>
-    <p>{{post.text}}</p>
+    {%  if post.status == 'ОП' %}
+        <h1><a href='{% url "blog:post_id" post.id %}'>{{post.title}}</a></h1>
+    {% endif %}
     {% endfor %}
   </body>
 </html>

@@ -2,9 +2,15 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>Главная страница</title>
 </head>
 <body>
-<h1>{{ title }}</h1>
+<p> {{ menu|join:" | "}} </p>
+
+    {%for post in all_post%}
+    {%  if post.status == 'ОП' %}
+        <h1><a href='{% url "blog:post_id" post.id %}'>{{post.title}}</a></h1>
+    {% endif %}
+    {% endfor %}
 </body>
 </html>
