@@ -5,9 +5,9 @@ from .models import Post
 
 
 def index(request):
-    menu = ['Главная', 'Архив', 'Список постов']
+    menu = ['Главная', 'Архив', 'Список постов', 'Войти']
     all_post = Post.objects.all()
-    return render(request, 'blog/index.html', {'menu': menu,'all_post':all_post} )
+    return render(request, 'blog/index.html', {'menu': menu, 'all_post': all_post})
 
 
 def about(request):
